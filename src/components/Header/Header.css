@@ -1,0 +1,262 @@
+.image {
+  color: white;
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #1b1b1b;
+  --muted: #6b6b6b;
+  --accent: #f0b83a; /* warm honey-like accent */
+  --border: #eaeaea;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar {
+  height: 72px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+}
+
+.brand img {
+  display: block;
+  cursor: pointer;
+  height: 50px;
+  color: #000 !important;
+  text-decoration: none !important; /* adjust to your logo */
+}
+
+.quiz-btn {
+  justify-self: start;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: background 0.2s ease;
+  border-color: #000 0.2s ease;
+}
+.quiz-btn:hover {
+  background: #eee;
+}
+
+.actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  color: var(--text);
+  background: transparent;
+  cursor: pointer;
+}
+.icon-btn:hover {
+  border-color: var(--border);
+}
+
+.icon-btn.cart {
+  position: relative;
+}
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #111;
+  font-size: 12px;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow);
+}
+
+/* Primary desktop nav */
+.primary-nav {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--border);
+}
+.primary-nav ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 12px 20px;
+}
+.primary-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+}
+.primary-nav a:hover {
+  color: #000;
+}
+
+/* Search panel dropdown */
+.search-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 72px;
+  transform: translateY(-16px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.search-panel.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+.search-panel form {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  padding: 12px 20px;
+}
+.search-panel input {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.search-submit,
+.search-close {
+  height: 42px;
+  width: 42px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #f7f7f7;
+}
+
+/* Mobile drawer */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 80vw;
+  left: 0;
+  transform: translateX(-100%);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+.mobile-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.drawer-header .brand img {
+  height: 22px;
+}
+
+.drawer-quiz {
+  width: 100%;
+  margin: 10px 0 18px;
+}
+
+.drawer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+.drawer-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 16px;
+}
+.drawer-account {
+  margin-top: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1090;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .primary-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .primary-nav {
+    display: none;
+  }
+  .quiz-btn {
+    display: inline-flex;
+  }
+  .hamburger {
+    display: inline-flex;
+  }
+  .topbar {
+    height: 72px;
+  }
+  .search-panel {
+    top: 68px;
+  }
+  .mobile {
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  .topbar {
+    height: 72px;
+    grid-template-columns: 1fr auto 1fr;
+  }
+  .primary-nav ul {
+    gap: 28px;
+  }
+  .hamburger {
+    display: none;
+  }
+  .primary-nav {
+    display: flex;
+  }
+}
